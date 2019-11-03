@@ -1,0 +1,14 @@
+@import "../../assets/styles/libs/vars";
+@import "../../assets/styles/libs/placeholders";
+@import "../../assets/styles/libs/mixins";
+@import "../../assets/styles/base/base";
+@import "../../assets/styles/base/fonts";
+.test {
+  color: $tabBarViolet;
+  font-size: 2rem;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
