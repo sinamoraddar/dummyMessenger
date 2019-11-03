@@ -1,9 +1,15 @@
-import React from 'react';
-import styles from './App.module.scss';
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import DashBoard from "../Dashboard/DashBoard";
+import styles from "./App.module.scss";
 
 function App() {
   return (
-    <div className={styles.test}>just testing!!!</div>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={DashBoard} />
+      </Switch>
+    </BrowserRouter>
   );
 }
 

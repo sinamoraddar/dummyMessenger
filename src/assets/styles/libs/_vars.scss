@@ -5,19 +5,11 @@ $desktopBreakPoint: 1440px;
 
 /* colors */
 // tabBar
-$tabBarViolet:#7070e0;
-// accent
-$green: hsl(163, 95%, 43%);
-//neutral
-$lightGray: hsl(106, 0%, 98%);
-$gray: hsl(0, 0%, 50%);
-$darkGray: hsl(0, 0%, 17%);
-// typography
-//headings
-$raleWayFontFamily: "Raleway", sans-serif;
-$headingsFontWeight: 700;
+$tabBarViolet: #7070e0;
+
+/* typography */
 //body
-$openSansFontFamily: "Open Sans", sans-serif;
+$libreFont: "Libre Franklin", sans-serif;
 $regularBodyFontWeight: 400;
 $semiBoldBodyFontWeight: 600;
 $boldBodyFontWeight: 700;
@@ -39,6 +31,3 @@ $veryShortSpacing: 0.1rem;
 // lineHeights
 
 $normalLineHeight: 1.5;
-
-// url subdirectory
-$fylo: "/Fylo-landing-page-with-detailed-integrations-section";

@@ -1,0 +1,9 @@
+@import "../../../assets/styles/libs/vars";
+.tabBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $tabBarViolet;
+  width: 100%;
+  height: 100px;
+}
