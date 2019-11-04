@@ -1,5 +1,5 @@
 import React from "react";
-import { channels } from "../../../Utils/Channels";
+import { channels } from "../../../Utils/channels";
 import TabBarItem from "./TabBarItem/TabBarItem";
 import styles from "./TabBar.module.scss";
 const TabBar = ({ setCurrentTab }) => (

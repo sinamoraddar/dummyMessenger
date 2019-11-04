@@ -6,9 +6,7 @@ import styles from "./App.module.scss";
 function App() {
   return (
     <BrowserRouter>
-      <Switch>
-        <Route path="/" exact component={DashBoard} />
-      </Switch>
+      <DashBoard />
     </BrowserRouter>
   );
 }

@@ -2,10 +2,10 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styles from "./TabBarItem.module.scss";
 
-const TabBarItem = ({ name, component, setCurrentTab }) => (
-  <button className={styles.tabBarItem} onClick={() => setCurrentTab(component)}>
+const TabBarItem = ({ name, component, path, setCurrentTab }) => (
+  <Link to={path} exact className={styles.tabBarItem}>
     {name}
-  </button>
+  </Link>
 );
 
 export default TabBarItem;

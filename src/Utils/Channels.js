@@ -1,14 +1,17 @@
 export const channels = [
   {
     name: "Channel 1",
-    component: "ChannelOne"
+    component: "ChannelOne",
+    path: "/channel1"
   },
   {
     name: "Channel 2",
-    component: "ChannelTwo"
+    component: "Messenger",
+    path: "/messenger"
   },
   {
     name: "Channel 3",
-    component: "ChannelThree"
+    component: "ChannelThree",
+    path: "/channel3"
   }
 ];

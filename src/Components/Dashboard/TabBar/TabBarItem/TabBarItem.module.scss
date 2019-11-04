@@ -8,19 +8,31 @@
   cursor: pointer;
   font-size: 1rem;
   text-transform: uppercase;
-
+text-decoration: none;
   @media screen and (hover: hover) {
     &:hover {
       &::after {
         content: "";
         background-color: white;
-        width: 60%;
+        width: 80%;
         height: 5px;
         position: absolute;
         left: 0;
         bottom: -10px;
         display: inline-block;
+        animation-name: fillBar;
+        animation-duration: 0.3s;
+        animation-iteration-count: 1;
+        animation-timing-function: linear;
       }
+    }
+  }
+  @keyframes fillBar {
+    from {
+      width: 0px;
+    }
+    to {
+      width: 80%;
     }
   }
 }
