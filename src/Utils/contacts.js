@@ -1,8 +1,4 @@
 export const contacts = {
-  // 0 property is for the current user
-  0: {
-    name: "dennis bergkamp"
-  },
   1: {
     name: "sina moraddar",
     profilePic: "",
@@ -67,7 +63,7 @@ ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egest
         
 GENERATED LOREM IPSUM
 20
-  
+
 COPY  Icon copy  red
 ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
         `,

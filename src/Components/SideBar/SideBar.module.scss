@@ -1,0 +1,15 @@
+@import "../../assets/styles/libs/vars";
+.sideBar {
+  // position: absolute;
+  // right: 0;
+  // top: 0;
+  height: 50px;
+  width: 100px;
+  background: $sideBarViolet;
+  // z-index: 122;
+  transition: width 0.3s ease-in-out;
+}
+.isOpen{
+  width: 200px;
+}
+

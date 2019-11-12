@@ -8,7 +8,7 @@
   cursor: pointer;
   font-size: 1rem;
   text-transform: uppercase;
-text-decoration: none;
+  text-decoration: none;
   @media screen and (hover: hover) {
     &:hover {
       &::after {
@@ -35,4 +35,15 @@ text-decoration: none;
       width: 80%;
     }
   }
+}
+
+.isCurrentTab::after {
+  content: "";
+  background-color: white;
+  width: 80%;
+  height: 5px;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  display: inline-block;
 }
