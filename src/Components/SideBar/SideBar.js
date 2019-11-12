@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Avatar from "./Avatar/Avatar";
 import styles from "./SideBar.module.scss";
 
 const SideBar = () => {
@@ -13,6 +14,7 @@ const SideBar = () => {
           <React.Fragment>&#9776;</React.Fragment>
         )}
       </button>
+      <Avatar />
       this is the side bar
     </aside>
   );

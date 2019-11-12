@@ -8,16 +8,18 @@ import SideBar from "../SideBar/SideBar";
 import ChannelOne from "../Dashboard/ChannelOne/ChannelOne";
 import ChannelThree from "../Dashboard/ChannelThree/ChannelThree";
 
-const DashBoard = () => {
-  const [currentTab, setCurrentTab] = useState("ChannelOne");
+const DashBoard = props => {
+  console.log(props.match);
+  // const [currentTab, setCurrentTab] = useState("ChannelOne");
   return (
     <main className={styles.dashboard}>
-      <TabBar currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      <TabBar />
       {/* <SideBar /> */}
       {/* we add the key prop to let react router differentiate 
           between different renders of the same component 
           on different routes
         */}
+
       <Route path="/" exact component={Welcome} />
       <Route path="/messenger" exact component={Messenger} />
       <Route path="/channel1" exact component={ChannelOne} />
