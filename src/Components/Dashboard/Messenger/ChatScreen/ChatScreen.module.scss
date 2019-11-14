@@ -1,3 +1,22 @@
-.typingArea{
-
+.chatScreen {
+  display: flex;
+  flex-direction: column;
+}
+.typingArea {
+}
+.message--user {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  width: 50%;
+  color: green;
+  align-self: flex-end;
+}
+.message--friend {
+  border: 1px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  width: 50%;
+  color: red;
+  align-self: flex-start;
 }

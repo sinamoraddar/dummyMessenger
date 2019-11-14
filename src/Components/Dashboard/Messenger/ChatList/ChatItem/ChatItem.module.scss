@@ -1,3 +1,68 @@
-.chatItem{
-    border: 1px solid red;
+@import "../../../../../assets/styles/libs/vars";
+.chatItem {
+  //   border: 1px solid red;
+  width: 100%;
+  height: 80px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1em;
+  * {
+    color: $chatItemText;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 50%;
+    height: 0.5px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: lighten($chatItemText, 40);
+  }
+  &:last-of-type {
+    &::after {
+      content: none;
+    }
+  }
+
+  @media screen and (hover: hover) {
+    &:hover {
+      background: darken($chatListBackground, 10);
+    }
+  }
+
+  img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+  }
+
+  .text {
+    height: 100%;
+    width: 75%;
+    margin-left: 10px;
+    position: relative;
+    // white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // display: feature-exists($feature: );
+    h4 {
+      margin: 0 0 10px 0;
+      font-size: 0.95em;
+    }
+    p {
+      margin: 0;
+      font-size: 0.8em;
+      //   overflow: hidden;
+    }
+  }
+}
+.isActive {
+  background: darken($chatListBackground, 10);
 }

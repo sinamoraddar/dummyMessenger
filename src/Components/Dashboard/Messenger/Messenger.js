@@ -7,6 +7,16 @@ import { contacts } from "../../../Utils/contacts";
 const Messenger = props => {
   const [currentChat, setCurrentChat] = useState(null);
   const [contactsList, setContactsList] = useState(null);
+  /* update the contactslist whenever the currentChat changes */
+  useEffect(() => {
+    if (currentChat) {
+      setContactsList({
+        ...contactsList,
+        [currentChat.userId]: { ...currentChat }
+      });
+    }
+  }, [currentChat]);
+
   //fetch the users data
   useEffect(() => {
     // contacts.map(contact => alert("hi"));
@@ -14,7 +24,7 @@ const Messenger = props => {
   }, []);
   return (
     <div className={styles.messenger}>
-      <ChatList contactsList={contactsList} setCurrentChat={setCurrentChat} />
+      <ChatList contactsList={contactsList} currentChat={currentChat} setCurrentChat={setCurrentChat} />
       <ChatScreen
         currentChat={currentChat}
         contactsList={contactsList}
