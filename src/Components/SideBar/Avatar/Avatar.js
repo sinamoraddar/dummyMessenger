@@ -8,6 +8,7 @@ const Avatar = () => (
       src={userInfo.profilePicture}
       alt={`${userInfo.name} ${userInfo.lastName}`}
     />
+    <figcaption>{userInfo.name}</figcaption>
   </figure>
 );
 

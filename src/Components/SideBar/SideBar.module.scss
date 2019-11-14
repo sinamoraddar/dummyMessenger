@@ -3,13 +3,33 @@
   // position: absolute;
   // right: 0;
   // top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   height: 50px;
-  width: 100px;
+  // width: 25%;
+  width: 190px;
   background: $sideBarViolet;
   // z-index: 122;
   transition: width 0.3s ease-in-out;
+  * {
+    color: white;
+  }
+  .toggleButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
 }
-.isOpen{
-  width: 200px;
+.isOpen {
+  width: 280px;
 }
-

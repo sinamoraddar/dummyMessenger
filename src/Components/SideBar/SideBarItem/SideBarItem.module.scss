@@ -1,0 +1,50 @@
+@import "../../../assets/styles/libs/vars";
+.sideBarItem {
+  //   color: white;
+  position: relative;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 65px;
+  padding: 1em 0;
+  transition: background 0.1s ease-in-out;
+}
+
+.isCurrentPage__closed::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  height: 100%;
+  width: 10px;
+  //   border-right: 10px solid white;
+}
+
+.isCurrentPage__opened {
+  background: white!important;
+  color: $sideBarViolet!important;
+ 
+}
+
+.sideBarItem:hover {
+  background: rgba(255, 255, 255, 0.233);
+}
+
+.icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+}
+.icon__opened {
+  margin-right: 10px;
+}
+
+.isOpen {
+  justify-content: flex-end;
+  padding-left: 25px;
+}
