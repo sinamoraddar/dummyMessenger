@@ -17,7 +17,7 @@ const DashBoard = props => {
       {context => {
         return (
           <main className={styles.dashboard}>
-            <h1>{context.testMessage}</h1>
+            {/* <h1>{context.testMessage}</h1> */}
             <TabBar />
             {/* <SideBar /> */}
             {/* we add the key prop to let react router differentiate 

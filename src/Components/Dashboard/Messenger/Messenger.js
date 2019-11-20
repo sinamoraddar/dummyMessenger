@@ -24,7 +24,11 @@ const Messenger = props => {
   }, []);
   return (
     <div className={styles.messenger}>
-      <ChatList contactsList={contactsList} currentChat={currentChat} setCurrentChat={setCurrentChat} />
+      <ChatList
+        contactsList={contactsList}
+        currentChat={currentChat}
+        setCurrentChat={setCurrentChat}
+      />
       <ChatScreen
         currentChat={currentChat}
         contactsList={contactsList}

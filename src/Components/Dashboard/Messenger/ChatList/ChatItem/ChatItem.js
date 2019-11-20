@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./ChatItem.module.scss";
 const getLastMessage = totalMessages => {
   let lastMessage = totalMessages.slice(-1)[0].content;
-  if (lastMessage.length >20) {
+  if (lastMessage.length > 20) {
     lastMessage = lastMessage.substring(0, 20) + "...";
   }
   return lastMessage;
@@ -16,7 +16,8 @@ const ChatItem = ({ chatData, currentChat, setCurrentChat }) => {
         styles.isActive}`}
       onClick={() => {
         setCurrentChat(chatData);
-        console.log("messeges", chatData.messages);
+
+        // console.log("messeges", chatData.messages);
       }}
     >
       <img src={chatData.profilePic} alt={chatData.name} />
