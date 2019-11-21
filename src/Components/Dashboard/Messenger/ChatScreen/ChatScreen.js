@@ -16,26 +16,28 @@ const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
                 <button onClick={() => setCurrentChat(null)}>
                   exit current chat
                 </button>
-                {currentChat.messages.map(chat =>
-                  chat.author === 0 ? (
-                    <div
-                      className={`${styles.message} ${styles["message--user"]}`}
-                    >
-                      {chat.content}
-                      time : {chat.submissionTime}
-                    </div>
-                  ) : (
-                    <div
-                      className={`${styles.message} ${styles["message--friend"]}`}
-                    >
-                      {chat.content}
-                      time : {chat.submissionTime}
-                    </div>
-                  )
-                )}
+                <div className={styles.messageContainer}>
+                  {currentChat.messages.map(chat =>
+                    chat.author === 0 ? (
+                      <div
+                        className={`${styles.message} ${styles["message--user"]}`}
+                      >
+                        {chat.content}
+                        time : {chat.submissionTime}
+                      </div>
+                    ) : (
+                      <div
+                        className={`${styles.message} ${styles["message--friend"]}`}
+                      >
+                        {chat.content}
+                        time : {chat.submissionTime}
+                      </div>
+                    )
+                  )}
+                </div>
                 <div className={styles.typingArea}>
                   <textarea
-                    placeholder="type something"
+                    placeholder="write a message ..."
                     onChange={e => setCurrentMessage(e.target.value)}
                     value={currentMessage}
                   />

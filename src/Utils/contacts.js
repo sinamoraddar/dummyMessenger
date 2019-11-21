@@ -8,36 +8,19 @@ export const contacts = {
         author: 1,
         content: `
         
-GENERATED LOREM IPSUM
-20
-  
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+hey there i'm using this app for the first time `,
         submissionTime: 150
       },
       {
-        author: 1,
+        author: 0,
         content: `
-        
-GENERATED LOREM IPSUM
-20
-  
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+     yeah , me too . i'm kind of getting the hang of it  `,
         submissionTime: 1500
       },
       {
         author: 0,
         content: `
-        
-GENERATED LOREM IPSUM
-20
-  
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+ it's got some really cool stuff in it 😃    `,
         submissionTime: 555000
       }
     ]
@@ -50,37 +33,21 @@ ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egest
       {
         author: 2,
         content: `
-        
-GENERATED LOREM IPSUM
-20
-  
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+    how you doin' my man? `,
         submissionTime: 150
       },
       {
         author: 2,
         content: `
-        
-GENERATED LOREM IPSUM
-20
-
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+        hope you're doing okay`,
         submissionTime: 1500
       },
       {
         author: 0,
         content: `
         
-GENERATED LOREM IPSUM
-20
-  
-COPY  Icon copy  red
-ut sem viverra aliquet eget sit amet tellus cras adipiscing enim eu turpis egestas pretium aenean pharetra magna ac placerat
-        `,
+     nothing special , same as always 
+   `,
         submissionTime: 555000
       }
     ]

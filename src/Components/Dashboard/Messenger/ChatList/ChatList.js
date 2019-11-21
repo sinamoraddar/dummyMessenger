@@ -36,12 +36,13 @@ const ChatList = ({ contactsList, currentChat, setCurrentChat }) => {
         />
         <img src="./assets/icons/magnifying-glass.svg" alt="search here" />
       </div>
-
-      {createChatList(
-        filterContactList(contactsList, filterBy),
-        setCurrentChat,
-        currentChat
-      )}
+      <div className={styles.chatItemContainer}>
+        {createChatList(
+          filterContactList(contactsList, filterBy),
+          setCurrentChat,
+          currentChat
+        )}
+      </div>
     </div>
   );
 };
