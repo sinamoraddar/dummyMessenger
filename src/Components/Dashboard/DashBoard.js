@@ -8,8 +8,24 @@ import SideBar from "../SideBar/SideBar";
 import ChannelOne from "../Dashboard/ChannelOne/ChannelOne";
 import ChannelThree from "../Dashboard/ChannelThree/ChannelThree";
 import AppContext from "../App/AppContext";
+import { database } from "../../firebase/firebase";
 
 const DashBoard = props => {
+  const [databaseTest, setDataBaseTest] = useState(null);
+  useEffect(() => {
+    database
+      .collection("users")
+      .get()
+      .then(querySnapshot => {
+        let tempDataBase = [];
+        querySnapshot.forEach(doc => {
+          // console.log(doc.data());
+          tempDataBase.push(doc.data());
+        });
+        console.log("tempDatabase", tempDataBase);
+        setDataBaseTest(tempDataBase);
+      });
+  }, []);
   console.log(props.match);
   // const [currentTab, setCurrentTab] = useState("ChannelOne");
   return (
@@ -17,6 +33,13 @@ const DashBoard = props => {
       {context => {
         return (
           <main className={styles.dashboard}>
+            <div>
+              just testing the firebase :
+              {databaseTest &&
+                databaseTest.map(data => (
+                  <div>{`${data.first} ${data.last} born on : ${data.born}`}</div>
+                ))}
+            </div>
             {/* <h1>{context.testMessage}</h1> */}
             <TabBar />
             {/* <SideBar /> */}
