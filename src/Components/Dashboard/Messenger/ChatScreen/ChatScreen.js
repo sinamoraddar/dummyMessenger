@@ -1,21 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import uuidv1 from "uuid/v1";
 import moment from "moment";
 import { database } from "../../../../firebase/firebase";
 import AppContext from "../../../App/AppContext";
+import { userInfo } from "../../../../Utils/userInfo";
 import styles from "./ChatScreen.module.scss";
 
-const delteMessage = (chatId, messageId) => {
+//update the last message document on the messages collection
+const updateLastmessage = currentChat => {
+  let lastMessage = {};
+  /* get the last message only if the list isn't empty,otherwise set an empty object */
+  if (currentChat.messages.length > 0) {
+    lastMessage = currentChat.messages.slice(-1)[0];
+  }
+  database
+    .collection("chats")
+    .doc(currentChat.chatId)
+    .collection("messages")
+    .doc("lastMessage")
+    .set(lastMessage)
+    .then(() => {
+      console.log("the last message was updated successfully");
+    })
+    .catch(error => console.log(error));
+};
+/* delete the message */
+const deleteMessage = (
+  chatId,
+  messageId,
+  setCurrentChat,
+  currentChat,
+  event
+) => {
   database
     .collection("chats")
     .doc(chatId)
     .collection("messages")
     .doc(messageId)
     .delete()
-    .then(() => console.log("the message was deleted successfully"))
+    .then(() => {
+      let tempMessagesList = currentChat.messages.filter(
+        message => message.messageId !== messageId
+      );
+      setCurrentChat({ ...currentChat, messages: tempMessagesList });
+    })
     .catch(error => console.log(error));
 };
-
+/* update the current chat  */
 const updateCurrentChat = (
   tempMessage,
   currentChat,
@@ -28,10 +59,16 @@ const updateCurrentChat = (
     .collection("messages")
     .doc("lastMessage")
     .set(tempMessage)
-    .then(() => {})
+    .then(() => {
+      // setCurrentMessage("");
+      setCurrentChat({
+        ...currentChat,
+        messages: [...currentChat.messages, tempMessage]
+      });
+    })
     .catch(error => console.log(error));
 };
-
+/* submit message functionality */
 const submitMessage = (
   currentMessage,
   setCurrentMessage,
@@ -55,7 +92,6 @@ const submitMessage = (
     .set(tempMessage)
     .then(() => {
       // alert("hi");
-
       updateCurrentChat(
         tempMessage,
         currentChat,
@@ -64,15 +100,23 @@ const submitMessage = (
       );
     })
     .catch(error => console.log(error));
-  setCurrentChat({
-    ...currentChat,
-    messages: [...currentChat.messages, tempMessage]
-  });
-  setCurrentMessage("");
 };
 
-const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
+const ChatScreen = ({
+  currentChat,
+  setCurrentChat,
+  contactsList,
+  setContactsList
+}) => {
   const [currentMessage, setCurrentMessage] = useState("");
+  /* clear the typing area whenever the chat data changes */
+  useEffect(() => {
+    setCurrentMessage("");
+    /* update the last message if the current chat data is not undefined */
+    if (currentChat) {
+      updateLastmessage(currentChat);
+    }
+  }, [currentChat]);
   // debugger;
   return (
     <AppContext.Consumer>
@@ -91,11 +135,22 @@ const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
                       <div
                         className={`${styles.message} ${styles["message--user"]}`}
                       >
+                        <img
+                          className={styles.profilePicture}
+                          src={userInfo.profilePicture}
+                          alt={`${userInfo.name} ${userInfo.lastName}`}
+                        />
                         {chat.content}
                         time : {moment(chat.submissionTime).format("HH : mm")}
                         <button
-                          onClick={() =>
-                            delteMessage(currentChat.chatId, chat.messageId)
+                          onClick={e =>
+                            deleteMessage(
+                              currentChat.chatId,
+                              chat.messageId,
+                              setCurrentChat,
+                              currentChat,
+                              e
+                            )
                           }
                         >
                           delete
@@ -105,11 +160,22 @@ const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
                       <div
                         className={`${styles.message} ${styles["message--friend"]}`}
                       >
+                        <img
+                          className={styles.profilePicture}
+                          src={currentChat.contact.profilePic}
+                          alt={currentChat.contact.name}
+                        />
                         {chat.content}
                         time : {moment(chat.submissionTime).format("HH : mm")}
                         <button
-                          onClick={() =>
-                            delteMessage(currentChat.chatId, chat.messageId)
+                          onClick={e =>
+                            deleteMessage(
+                              currentChat.chatId,
+                              chat.messageId,
+                              setCurrentChat,
+                              currentChat,
+                              e
+                            )
                           }
                         >
                           delete

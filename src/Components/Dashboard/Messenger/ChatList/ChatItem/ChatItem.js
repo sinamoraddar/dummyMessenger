@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { database } from "../../../../../firebase/firebase";
 import styles from "./ChatItem.module.scss";
 
-const getChatData = (userId, setCurrentChat) => {
+const getChatData = (userId, setCurrentChat, contact) => {
   database
     .collection("chats")
     .doc(userId)
@@ -11,10 +11,11 @@ const getChatData = (userId, setCurrentChat) => {
     .then(querysnapshot => {
       let tempChatData = [];
       querysnapshot.forEach(doc => {
-        tempChatData.push(doc.data());
+        /* just because we don't need the last message here,we simply ignore it */
+        if (doc.id !== "lastMessage") tempChatData.push(doc.data());
       });
       tempChatData.sort((a, b) => a.submissionTime - b.submissionTime);
-      setCurrentChat({ chatId: userId, messages: tempChatData });
+      setCurrentChat({ chatId: userId, contact, messages: tempChatData });
     })
     .catch(error => console.log(error));
 };
@@ -29,10 +30,15 @@ const ChatItem = ({ contact, currentChat, setCurrentChat }) => {
       .doc("lastMessage")
       .get()
       .then(querysnapshot => {
-        console.log("lastmessage", querysnapshot.data());
-        let tempLastMessage = querysnapshot.data().content;
-        if (tempLastMessage.length > 20) {
-          tempLastMessage = tempLastMessage.substring(0, 20) + "...";
+        let tempLastMessage = "";
+        if (Object.keys(querysnapshot.data()).length > 0) {
+          // console.log(querysnapshot.data());
+          // debugger;
+          console.log("lastmessage", querysnapshot.data());
+          tempLastMessage = querysnapshot.data().content;
+          if (tempLastMessage.length > 20) {
+            tempLastMessage = tempLastMessage.substring(0, 20) + "...";
+          }
         }
         setLastMessage(tempLastMessage);
       }, []);
@@ -44,7 +50,7 @@ const ChatItem = ({ contact, currentChat, setCurrentChat }) => {
         styles.isActive}`}
       onClick={() => {
         // alert("hi");
-        getChatData(contact.userId, setCurrentChat);
+        getChatData(contact.userId, setCurrentChat, contact);
         // getChatData(contact.userId);
         // console.log("messeges", contact.messages);
       }}

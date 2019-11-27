@@ -35,12 +35,21 @@ const ChatList = ({ contactsList, currentChat, setCurrentChat }) => {
         <img src="./assets/icons/magnifying-glass.svg" alt="search here" />
       </div>
       <div className={styles.chatItemContainer}>
-        {contactsList &&
+        {contactsList ? (
           createChatList(
             filterContactList(contactsList, filterBy),
             setCurrentChat,
             currentChat
-          )}
+          )
+        ) : (
+          <React.Fragment>
+            <img
+              className={styles.loading}
+              src="./assets/gifs/loading.svg"
+              alt="loading"
+            />
+          </React.Fragment>
+        )}
       </div>
     </div>
   );
