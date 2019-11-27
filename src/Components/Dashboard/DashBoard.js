@@ -33,13 +33,6 @@ const DashBoard = props => {
       {context => {
         return (
           <main className={styles.dashboard}>
-            <div>
-              just testing the firebase :
-              {databaseTest &&
-                databaseTest.map(data => (
-                  <div>{`${data.first} ${data.last} born on : ${data.born}`}</div>
-                ))}
-            </div>
             {/* <h1>{context.testMessage}</h1> */}
             <TabBar />
             {/* <SideBar /> */}

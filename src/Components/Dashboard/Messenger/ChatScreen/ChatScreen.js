@@ -1,10 +1,79 @@
 import React, { useState } from "react";
+import uuidv1 from "uuid/v1";
 import moment from "moment";
+import { database } from "../../../../firebase/firebase";
 import AppContext from "../../../App/AppContext";
 import styles from "./ChatScreen.module.scss";
 
+const delteMessage = (chatId, messageId) => {
+  database
+    .collection("chats")
+    .doc(chatId)
+    .collection("messages")
+    .doc(messageId)
+    .delete()
+    .then(() => console.log("the message was deleted successfully"))
+    .catch(error => console.log(error));
+};
+
+const updateCurrentChat = (
+  tempMessage,
+  currentChat,
+  setCurrentChat,
+  setCurrentMessage
+) => {
+  database
+    .collection("chats")
+    .doc(currentChat.chatId)
+    .collection("messages")
+    .doc("lastMessage")
+    .set(tempMessage)
+    .then(() => {})
+    .catch(error => console.log(error));
+};
+
+const submitMessage = (
+  currentMessage,
+  setCurrentMessage,
+  currentChat,
+  setCurrentChat
+) => {
+  const tempUuid = uuidv1();
+  const tempMessage = {
+    author: 0,
+    content: currentMessage,
+    messageId: tempUuid,
+    submissionTime: moment().valueOf()
+  };
+  /* add the submitted message to the firestore */
+  // debugger;
+  database
+    .collection("chats")
+    .doc(currentChat.chatId)
+    .collection("messages")
+    .doc(tempUuid)
+    .set(tempMessage)
+    .then(() => {
+      // alert("hi");
+
+      updateCurrentChat(
+        tempMessage,
+        currentChat,
+        setCurrentChat,
+        setCurrentMessage
+      );
+    })
+    .catch(error => console.log(error));
+  setCurrentChat({
+    ...currentChat,
+    messages: [...currentChat.messages, tempMessage]
+  });
+  setCurrentMessage("");
+};
+
 const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
   const [currentMessage, setCurrentMessage] = useState("");
+  // debugger;
   return (
     <AppContext.Consumer>
       {data => {
@@ -23,14 +92,28 @@ const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
                         className={`${styles.message} ${styles["message--user"]}`}
                       >
                         {chat.content}
-                        time : {chat.submissionTime}
+                        time : {moment(chat.submissionTime).format("HH : mm")}
+                        <button
+                          onClick={() =>
+                            delteMessage(currentChat.chatId, chat.messageId)
+                          }
+                        >
+                          delete
+                        </button>
                       </div>
                     ) : (
                       <div
                         className={`${styles.message} ${styles["message--friend"]}`}
                       >
                         {chat.content}
-                        time : {chat.submissionTime}
+                        time : {moment(chat.submissionTime).format("HH : mm")}
+                        <button
+                          onClick={() =>
+                            delteMessage(currentChat.chatId, chat.messageId)
+                          }
+                        >
+                          delete
+                        </button>
                       </div>
                     )
                   )}
@@ -45,19 +128,13 @@ const ChatScreen = ({ currentChat, setCurrentChat, setContactsList }) => {
                   currentMessage && (
                     <button
                       onClick={() => {
-                        setCurrentChat({
-                          ...currentChat,
-                          messages: [
-                            ...currentChat.messages,
-                            {
-                              content: currentMessage,
-                              // debugger(;
-                              submissionTime: new Date().now,
-                              author: 0
-                            }
-                          ]
-                        });
-                        setCurrentMessage("");
+                        submitMessage(
+                          currentMessage,
+                          setCurrentMessage,
+                          currentChat,
+                          setCurrentChat
+                        );
+
                         // data.setTestMessage(currentMessage);
                       }}
                     >
