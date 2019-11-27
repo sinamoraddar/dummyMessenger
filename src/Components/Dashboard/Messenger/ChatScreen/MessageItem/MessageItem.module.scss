@@ -1,0 +1,118 @@
+@import "../../../../../assets/styles/libs/vars";
+@import "../../../../../assets/styles/libs/placeholders";
+
+.container {
+  width: 70%;
+  //   position: relative;
+  display: flex;
+  padding-bottom: 35px;
+  .profilePicture {
+    width: 45px;
+    height: 45px;
+    margin: 0 0.7rem;
+    border-radius: 50%;
+  }
+  .message--user {
+    // border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    // color: green;
+    color: black;
+    background: $chatListBackground;
+    // align-self: flex-end;
+    animation-name: appearAnimation--Left;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+  .message--friend {
+    // border: 1px solid black;
+    border-radius: 10px;
+    margin: 10px;
+    // color: red;
+    color: white;
+
+    background: $friendMessage;
+    // align-self: flex-start;
+    animation-name: appearAnimation--Right;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .message {
+    @extend %normalBoxShadow;
+    // position: absolute;
+    padding: 1.2rem 2.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+    width: 65%;
+    font-size: 1rem;
+
+    // right: 0;
+    .deleteButton {
+      position: absolute;
+      left: 0;
+      bottom: -30px;
+      background: none;
+      border: none;
+      color: darken($chatListBackground, 45);
+      font-size: 1rem;
+      cursor: pointer;
+      outline: none;
+      transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+      @media screen and (hover: hover) {
+        &:hover {
+          color: black;
+          transform: scale(1.1);
+        }
+      }
+    }
+    .deleteButton--right {
+      right: 0;
+      left: unset;
+    }
+    span {
+      position: absolute;
+      color: darken($chatListBackground, 45);
+      bottom: -30px;
+    }
+    .time--user {
+      left: 0;
+    }
+    .time--friend {
+      right: 0;
+    }
+  }
+
+  @keyframes appearAnimation--Left {
+    from {
+      transform: translate(100%, 100%);
+
+      // bottom: 0;
+    }
+    to {
+      transform: translate(0, 0);
+      // transform:tr(0);
+      // bottom: unset;
+    }
+  }
+  @keyframes appearAnimation--Right {
+    from {
+      transform: translate(-100%, 100%);
+
+      // bottom: 0;
+    }
+    to {
+      transform: translate(0);
+      // bottom: unset;
+    }
+  }
+}
+
+.left {
+  align-self: flex-start;
+}
+.right {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row-reverse;
+}

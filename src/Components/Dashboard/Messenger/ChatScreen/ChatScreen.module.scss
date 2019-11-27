@@ -18,7 +18,7 @@
   z-index: 5;
   button {
     position: absolute;
-    right: 0;
+    right: 10px;
     top: 0;
     bottom: 0;
     margin: auto 0;
@@ -30,6 +30,13 @@
     border: none;
     background: $sendMessageButton;
     color: white;
+    font-size: 1.5rem;
+    transition: background 0.2s linear;
+    @media screen and(hover:hover) {
+      &:hover {
+        background: darken($sendMessageButton, 5);
+      }
+    }
   }
   textarea {
     display: flex;
@@ -53,68 +60,24 @@
   padding: 2rem 0.5rem 80px 0.5rem;
   overflow-x: hidden;
   overflow-y: auto;
-  .profilePicture {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
 }
 
-.message--user {
-  // border: 1px solid black;
-  border-radius: 10px;
-  margin: 10px;
-  width: 50%;
-  // color: green;
-  color: black;
-  background: $chatListBackground;
-  align-self: flex-end;
-  animation-name: appearAnimation--Left;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-}
-.message--friend {
-  // border: 1px solid black;
-  border-radius: 10px;
-  margin: 10px;
-  width: 50%;
-  // color: red;
-  color: white;
-
-  background: $friendMessage;
-  align-self: flex-start;
-  animation-name: appearAnimation--Right;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-in-out;
-}
-
-.message {
-  @extend %normalBoxShadow;
-  // position: absolute;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-@keyframes appearAnimation--Left {
-  from {
-    transform: translate(100%, 100%);
-
-    // bottom: 0;
-  }
-  to {
-    transform: translate(0, 0);
-    // transform:tr(0);
-    // bottom: unset;
-  }
-}
-@keyframes appearAnimation--Right {
-  from {
-    transform: translate(-100%, 100%);
-
-    // bottom: 0;
-  }
-  to {
-    transform: translate(0);
-    // bottom: unset;
+.close {
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: darken($chatListBackground, 10);
+  width: 40px;
+  height: 40px;
+  align-self: center;
+  transition: transform 0.2s ease-in-out, background 0.2s linear;
+  @media screen and (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      background: darken($chatListBackground, 15);
+    }
   }
 }

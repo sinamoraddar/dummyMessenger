@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import MessageItem from "./MessageItem/MessageItem";
 import uuidv1 from "uuid/v1";
 import moment from "moment";
 import { database } from "../../../../firebase/firebase";
@@ -126,61 +127,30 @@ const ChatScreen = ({
             {/* render chat screen only when the currentChat is not null */}
             {currentChat ? (
               <React.Fragment>
-                <button onClick={() => setCurrentChat(null)}>
-                  exit current chat
+                <button
+                  className={styles.close}
+                  onClick={() => setCurrentChat(null)}
+                >
+                  <i className="icon ion-md-close"></i>
                 </button>
                 <div className={styles.messageContainer}>
                   {currentChat.messages.map(chat =>
                     chat.author === 0 ? (
-                      <div
-                        className={`${styles.message} ${styles["message--user"]}`}
-                      >
-                        <img
-                          className={styles.profilePicture}
-                          src={userInfo.profilePicture}
-                          alt={`${userInfo.name} ${userInfo.lastName}`}
-                        />
-                        {chat.content}
-                        time : {moment(chat.submissionTime).format("HH : mm")}
-                        <button
-                          onClick={e =>
-                            deleteMessage(
-                              currentChat.chatId,
-                              chat.messageId,
-                              setCurrentChat,
-                              currentChat,
-                              e
-                            )
-                          }
-                        >
-                          delete
-                        </button>
-                      </div>
+                      <MessageItem
+                        author={userInfo}
+                        chat={chat}
+                        deleteMessage={deleteMessage}
+                        currentChat={currentChat}
+                        setCurrentChat={setCurrentChat}
+                      />
                     ) : (
-                      <div
-                        className={`${styles.message} ${styles["message--friend"]}`}
-                      >
-                        <img
-                          className={styles.profilePicture}
-                          src={currentChat.contact.profilePic}
-                          alt={currentChat.contact.name}
-                        />
-                        {chat.content}
-                        time : {moment(chat.submissionTime).format("HH : mm")}
-                        <button
-                          onClick={e =>
-                            deleteMessage(
-                              currentChat.chatId,
-                              chat.messageId,
-                              setCurrentChat,
-                              currentChat,
-                              e
-                            )
-                          }
-                        >
-                          delete
-                        </button>
-                      </div>
+                      <MessageItem
+                        author={currentChat.contact}
+                        chat={chat}
+                        deleteMessage={deleteMessage}
+                        currentChat={currentChat}
+                        setCurrentChat={setCurrentChat}
+                      />
                     )
                   )}
                 </div>
@@ -204,7 +174,7 @@ const ChatScreen = ({
                         // data.setTestMessage(currentMessage);
                       }}
                     >
-                      send
+                      <i className="icon ion-md-send"></i>
                     </button>
                   )}
                 </div>
