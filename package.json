@@ -1,9 +1,11 @@
 {
   "name": "dummymessenger",
+  "homepage": "https://sinamoraddar.github.io/dummyMessenger",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "firebase": "^7.5.0",
+    "gh-pages": "^2.1.1",
     "moment": "^2.24.0",
     "node-sass": "^4.13.0",
     "numeral": "^2.0.6",
@@ -17,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

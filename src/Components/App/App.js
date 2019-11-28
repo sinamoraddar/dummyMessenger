@@ -9,6 +9,10 @@ import "./App.scss";
 
 function App() {
   const [currentView, setCurrentView] = useState(`sideBar`);
+  const homepage =
+    process.env.NODE_ENV === "development"
+      ? "/"
+      : "/REST-Countries-API-with-color-theme-switcher/";
   return (
     <AppContext.Provider
       value={{
@@ -18,12 +22,14 @@ function App() {
     >
       <BrowserRouter>
         <SideBar />
-        {/* display the dashboard component for different routes */}
-        {["/", "/messenger", "/channel1", "/channel3"].map((path, index) => (
-          <Route path={path} exact component={DashBoard} key={index} />
-        ))}
-        <Route path={"/settings"} exact component={Settings} />
-        <Route path={"/calls"} exact component={CallScreen} />
+        <Switch>
+          <Route path={homepage} exact component={DashBoard} />
+          <Route path={homepage + "channel1"} exact component={DashBoard} />
+          <Route path={homepage + "messenger"} exact component={DashBoard} />
+          <Route path={homepage + "channel3"} exact component={DashBoard} />
+          <Route path={homepage + "settings"} exact component={Settings} />
+          <Route path={homepage + "calls"} exact component={CallScreen} />
+        </Switch>
       </BrowserRouter>
     </AppContext.Provider>
   );
