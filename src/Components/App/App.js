@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import DashBoard from "../Dashboard/DashBoard";
 import Settings from "../Settings/Settings";
@@ -7,26 +7,27 @@ import CallScreen from "../CallScreen/CallScreen";
 import AppContext from "./AppContext";
 import "./App.scss";
 
+const setInitialCurrentView = homepage => {
+  /* set the initial state for the currentView based on the url */
+  switch (window.location.pathname) {
+    case homepage + "settings": {
+      return "settings";
+    }
+    case homepage + "calls": {
+      return "calls";
+    }
+    default: {
+      return "Home";
+    }
+  }
+};
+
 function App() {
-  const [currentView, setCurrentView] = useState(null);
   const homepage =
     process.env.NODE_ENV === "development" ? "/" : "/dummyMessenger/";
-  /* set the initial state for the currentView based on the url */
-  useEffect(() => {
-    switch (window.location.pathname) {
-      case homepage + "settings": {
-        setCurrentView("settings");
-        break;
-      }
-      case homepage + "calls": {
-        setCurrentView("calls");
-        break;
-      }
-      default: {
-        setCurrentView("Home");
-      }
-    }
-  }, []);
+  const [currentView, setCurrentView] = useState(
+    setInitialCurrentView(homepage)
+  );
 
   return (
     <AppContext.Provider

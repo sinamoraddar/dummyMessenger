@@ -3,9 +3,7 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 // If you enabled Analytics in your project, add the Firebase SDK for Analytics
 import "firebase/analytics";
-import { contacts } from "../Utils/contacts";
-import uuidv1 from "uuid/v1";
-import moment from "moment";
+/* firebase configuration  */
 const firebaseConfig = {
   apiKey: "AIzaSyB6xS5yf1JofwEnHY6ApmUwALoi49MeIdw",
   authDomain: "dummymessenger-5fe99.firebaseapp.com",

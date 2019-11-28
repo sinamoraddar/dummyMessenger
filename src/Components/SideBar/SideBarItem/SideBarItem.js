@@ -14,7 +14,6 @@ const SideBarItem = ({
   return (
     <Link
       to={path}
-      exact
       onClick={() => {
         setCurrentPage(name);
         setCurrentView(name);
