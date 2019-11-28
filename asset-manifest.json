@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/dummyMessenger/static/css/main.a8d2cb9f.chunk.css",
-    "main.js": "/dummyMessenger/static/js/main.39e93906.chunk.js",
-    "main.js.map": "/dummyMessenger/static/js/main.39e93906.chunk.js.map",
+    "main.js": "/dummyMessenger/static/js/main.20cb1d0c.chunk.js",
+    "main.js.map": "/dummyMessenger/static/js/main.20cb1d0c.chunk.js.map",
     "runtime-main.js": "/dummyMessenger/static/js/runtime-main.00e15514.js",
     "runtime-main.js.map": "/dummyMessenger/static/js/runtime-main.00e15514.js.map",
     "static/js/2.fc3c3a66.chunk.js": "/dummyMessenger/static/js/2.fc3c3a66.chunk.js",
     "static/js/2.fc3c3a66.chunk.js.map": "/dummyMessenger/static/js/2.fc3c3a66.chunk.js.map",
     "index.html": "/dummyMessenger/index.html",
-    "precache-manifest.89e963e88481e372106b5cd298504b98.js": "/dummyMessenger/precache-manifest.89e963e88481e372106b5cd298504b98.js",
+    "precache-manifest.c66b9db6d3a43c23e66f9057ee099dde.js": "/dummyMessenger/precache-manifest.c66b9db6d3a43c23e66f9057ee099dde.js",
     "service-worker.js": "/dummyMessenger/service-worker.js",
     "static/css/main.a8d2cb9f.chunk.css.map": "/dummyMessenger/static/css/main.a8d2cb9f.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.00e15514.js",
     "static/js/2.fc3c3a66.chunk.js",
     "static/css/main.a8d2cb9f.chunk.css",
-    "static/js/main.39e93906.chunk.js"
+    "static/js/main.20cb1d0c.chunk.js"
   ]
 }
