@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import ChatItem from "./ChatItem/ChatItem";
 import styles from "./ChatList.module.scss";
 
-const createChatList = (tempContactsList, setCurrentChat, currentChat) => {
+const createChatList = (
+  tempContactsList,
+  setCurrentChat,
+  currentChat,
+  setCurrentMessengerView
+) => {
   // console.log(tempContactsList);
   return tempContactsList.map(contact => (
     <ChatItem
       contact={contact}
       setCurrentChat={setCurrentChat}
       currentChat={currentChat}
+      setCurrentMessengerView={setCurrentMessengerView}
     />
   ));
 };
@@ -20,11 +26,23 @@ const filterContactList = (contactsList, filterBy) => {
   });
 };
 
-const ChatList = ({ contactsList, currentChat, setCurrentChat }) => {
+const ChatList = ({
+  contactsList,
+  currentChat,
+  setCurrentChat,
+  currentMessengerView,
+  setCurrentMessengerView
+}) => {
   const [filterBy, setFilterBy] = useState("");
   console.log("contactslist", contactsList);
   return (
-    <div className={styles.chatList}>
+    <div
+      className={`${styles.chatList} ${
+        currentMessengerView === "chatList"
+          ? styles.isCurrentMessengerView
+          : styles.isNotCurrentMessengerView
+      }`}
+    >
       <div className={styles.searchInput}>
         <input
           type="text"
@@ -39,7 +57,8 @@ const ChatList = ({ contactsList, currentChat, setCurrentChat }) => {
           createChatList(
             filterContactList(contactsList, filterBy),
             setCurrentChat,
-            currentChat
+            currentChat,
+            setCurrentMessengerView
           )
         ) : (
           <React.Fragment>

@@ -8,14 +8,12 @@ import AppContext from "./AppContext";
 import "./App.scss";
 
 function App() {
-  const [testMessage, setTestMessage] = useState(
-    `hey there , i'm trying the context api for the first time, hope i can figure it out`
-  );
+  const [currentView, setCurrentView] = useState(`sideBar`);
   return (
     <AppContext.Provider
       value={{
-        testMessage,
-        setTestMessage
+        currentView,
+        setCurrentView
       }}
     >
       <BrowserRouter>

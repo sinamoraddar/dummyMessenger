@@ -8,6 +8,7 @@ const Messenger = props => {
   // const [chatList, setChatList] = useState({});
   const [currentChat, setCurrentChat] = useState(null);
   const [contactsList, setContactsList] = useState(null);
+  const [currentMessengerView, setCurrentMessengerView] = useState("chatList");
   /* update the contactslist whenever the currentChat changes */
   // useEffect(() => {
   //   if (currentChat) {
@@ -42,12 +43,16 @@ const Messenger = props => {
         contactsList={contactsList}
         currentChat={currentChat}
         setCurrentChat={setCurrentChat}
+        currentMessengerView={currentMessengerView}
+        setCurrentMessengerView={setCurrentMessengerView}
       />
       <ChatScreen
         currentChat={currentChat}
         contactsList={contactsList}
         setCurrentChat={setCurrentChat}
         setContactsList={setContactsList}
+        currentMessengerView={currentMessengerView}
+        setCurrentMessengerView={setCurrentMessengerView}
       />
     </div>
   );

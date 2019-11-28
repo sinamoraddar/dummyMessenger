@@ -107,7 +107,9 @@ const ChatScreen = ({
   currentChat,
   setCurrentChat,
   contactsList,
-  setContactsList
+  setContactsList,
+  currentMessengerView,
+  setCurrentMessengerView
 }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   /* clear the typing area whenever the chat data changes */
@@ -123,36 +125,51 @@ const ChatScreen = ({
     <AppContext.Consumer>
       {data => {
         return (
-          <div className={styles.chatScreen}>
+          <div
+            className={`${styles.chatScreen}
+        
+       ${
+         currentMessengerView === "chatScreen"
+           ? styles.isCurrentMessengerView
+           : styles.isNotCurrentMessengerView
+       }
+         
+          `}
+          >
             {/* render chat screen only when the currentChat is not null */}
             {currentChat ? (
               <React.Fragment>
                 <button
                   className={styles.close}
-                  onClick={() => setCurrentChat(null)}
+                  onClick={() => {
+                    setCurrentChat(null);
+                    setCurrentMessengerView("chatList");
+                  }}
                 >
                   <i className="icon ion-md-close"></i>
                 </button>
-                <div className={styles.messageContainer}>
-                  {currentChat.messages.map(chat =>
-                    chat.author === 0 ? (
-                      <MessageItem
-                        author={userInfo}
-                        chat={chat}
-                        deleteMessage={deleteMessage}
-                        currentChat={currentChat}
-                        setCurrentChat={setCurrentChat}
-                      />
-                    ) : (
-                      <MessageItem
-                        author={currentChat.contact}
-                        chat={chat}
-                        deleteMessage={deleteMessage}
-                        currentChat={currentChat}
-                        setCurrentChat={setCurrentChat}
-                      />
-                    )
-                  )}
+                <div className={styles.messageScreen}>
+                  <div className={styles.messageContainer}>
+                    {currentChat.messages.map(chat =>
+                      chat.author === 0 ? (
+                        <MessageItem
+                          author={userInfo}
+                          chat={chat}
+                          deleteMessage={deleteMessage}
+                          currentChat={currentChat}
+                          setCurrentChat={setCurrentChat}
+                        />
+                      ) : (
+                        <MessageItem
+                          author={currentChat.contact}
+                          chat={chat}
+                          deleteMessage={deleteMessage}
+                          currentChat={currentChat}
+                          setCurrentChat={setCurrentChat}
+                        />
+                      )
+                    )}
+                  </div>
                 </div>
                 <div className={styles.typingArea}>
                   <textarea

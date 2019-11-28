@@ -20,7 +20,12 @@ const getChatData = (userId, setCurrentChat, contact) => {
     .catch(error => console.log(error));
 };
 
-const ChatItem = ({ contact, currentChat, setCurrentChat }) => {
+const ChatItem = ({
+  contact,
+  currentChat,
+  setCurrentChat,
+  setCurrentMessengerView
+}) => {
   const [lastMessage, setLastMessage] = useState(null);
   useEffect(() => {
     database
@@ -51,6 +56,7 @@ const ChatItem = ({ contact, currentChat, setCurrentChat }) => {
       onClick={() => {
         // alert("hi");
         getChatData(contact.userId, setCurrentChat, contact);
+        setCurrentMessengerView("chatScreen");
         // getChatData(contact.userId);
         // console.log("messeges", contact.messages);
       }}

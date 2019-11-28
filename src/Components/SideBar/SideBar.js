@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import AppContext from "../App/AppContext";
 import Avatar from "./Avatar/Avatar";
 import SideBarItem from "./SideBarItem/SideBarItem";
 import styles from "./SideBar.module.scss";
@@ -28,43 +29,56 @@ const SideBar = () => {
   }, []);
 
   return (
-    <aside className={`${styles.sideBar} ${isOpen && styles.isOpen}`}>
-      <button
-        className={styles.toggleButton}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? (
-          <React.Fragment>&#215;</React.Fragment>
-        ) : (
-          <React.Fragment>&#9776;</React.Fragment>
-        )}
-      </button>
-      <Avatar />
-      <SideBarItem
-        path="/"
-        icon="house"
-        name="Home"
-        isOpen={isOpen}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      <SideBarItem
-        path="/settings"
-        icon="settings"
-        name="Settings"
-        isOpen={isOpen}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-      <SideBarItem
-        path="/calls"
-        icon="phone-call"
-        name="Calls"
-        isOpen={isOpen}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-    </aside>
+    <AppContext.Consumer>
+      {({ currentView, setCurrentView }) => (
+        <aside
+          className={`${styles.sideBar} ${isOpen && styles.isOpen} ${
+            currentView === "sideBar"
+              ? styles.isCurrentView
+              : styles.isNotCurrentView
+          }`}
+        >
+          <button
+            className={styles.toggleButton}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? (
+              <React.Fragment>&#215;</React.Fragment>
+            ) : (
+              <React.Fragment>&#9776;</React.Fragment>
+            )}
+          </button>
+          <Avatar />
+          <SideBarItem
+            path="/"
+            icon="house"
+            name="Home"
+            isOpen={isOpen}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            setCurrentView={setCurrentView}
+          />
+          <SideBarItem
+            path="/settings"
+            icon="settings"
+            name="Settings"
+            isOpen={isOpen}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            setCurrentView={setCurrentView}
+          />
+          <SideBarItem
+            path="/calls"
+            icon="phone-call"
+            name="Calls"
+            isOpen={isOpen}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            setCurrentView={setCurrentView}
+          />
+        </aside>
+      )}
+    </AppContext.Consumer>
   );
 };
 

@@ -8,13 +8,17 @@ const SideBarItem = ({
   name,
   isOpen,
   currentPage,
-  setCurrentPage
+  setCurrentPage,
+  setCurrentView
 }) => {
   return (
     <Link
       to={path}
       exact
-      onClick={() => setCurrentPage(name)}
+      onClick={() => {
+        setCurrentPage(name);
+        setCurrentView(name);
+      }}
       className={`${styles.sideBarItem} ${currentPage === name &&
         (isOpen ? styles.isCurrentPage__opened : styles.isCurrentPage__closed)}
         ${isOpen && styles.isOpen}
@@ -25,9 +29,9 @@ const SideBarItem = ({
         className={`${styles.icon}
         ${isOpen ? styles.icon__opened : styles.icon__closed}`}
         style={{
-          background: ` url(./assets/icons/${icon}${(currentPage === name &&
-            isOpen )?
-            `-violet`:''}.svg)`
+          background: ` url(./assets/icons/${icon}${
+            currentPage === name && isOpen ? `-violet` : ""
+          }.svg)`
         }}
       ></span>
     </Link>

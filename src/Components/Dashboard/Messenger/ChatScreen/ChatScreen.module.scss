@@ -53,15 +53,23 @@
   }
 }
 
-.messageContainer {
-  display: flex;
-  flex-direction: column;
+.messageScreen {
+  // display: flex;
+  // flex-direction: column;
   width: 100%;
+
   // flex: 1 1 auto;
   height: calc(100% - 80px);
   padding: calc(1.5rem + 40px) 1rem 1.5rem 1rem;
   overflow-x: hidden;
   overflow-y: auto;
+  .messageContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    min-height: 100%;
+  }
 }
 
 .close {
@@ -88,5 +96,24 @@
       background: darken($chatListBackground, 15);
       opacity: 1;
     }
+  }
+}
+
+.isCurrentMessengerView {
+  @media screen and (max-width: 1000px) {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    // z-index: 100;
+    max-width: unset;
+  }
+}
+.isNotCurrentMessengerView {
+  @media screen and (max-width: 1000px) {
+    display: none;
   }
 }

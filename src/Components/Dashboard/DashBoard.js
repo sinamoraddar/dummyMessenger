@@ -30,9 +30,15 @@ const DashBoard = props => {
   // const [currentTab, setCurrentTab] = useState("ChannelOne");
   return (
     <AppContext.Consumer>
-      {context => {
+      {({ currentView, setCurrentView }) => {
         return (
-          <main className={styles.dashboard}>
+          <main
+            className={`${styles.dashboard} ${
+              currentView === "Home"
+                ? styles.isCurrentView
+                : styles.isNotCurrentView
+            }`}
+          >
             {/* <h1>{context.testMessage}</h1> */}
             <TabBar />
             {/* <SideBar /> */}
