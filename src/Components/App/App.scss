@@ -12,8 +12,9 @@
   // overflow: hidden;
   > * {
     height: 100%;
+    box-sizing: border-box !important;
   }
 }
 html {
-  overflow: hidden;
+  // overflow: hidden;
 }

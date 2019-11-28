@@ -6,7 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   // height: 50px;
   // height: 100vh;
   // width: 25%;

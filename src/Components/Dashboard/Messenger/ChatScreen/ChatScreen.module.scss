@@ -7,12 +7,13 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
-  padding: 1rem 0 100px 0;
+
+  // padding: 1rem 0 100px 0;
 }
 .typingArea {
   @extend %normalBoxShadow;
   position: absolute;
-  bottom: 100px;
+  bottom: 0px;
   width: 100%;
   height: 80px;
   z-index: 5;
@@ -56,14 +57,16 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  padding: 2rem 0.5rem 80px 0.5rem;
+  // flex: 1 1 auto;
+  height: calc(100% - 80px);
+  padding: calc(1.5rem + 40px) 1rem 1.5rem 1rem;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 .close {
   border: none;
+  // margin: 1rem 0;
   background: none;
   cursor: pointer;
   outline: none;
@@ -73,11 +76,17 @@
   width: 40px;
   height: 40px;
   align-self: center;
-  transition: transform 0.2s ease-in-out, background 0.2s linear;
+  position: absolute;
+  top: 1rem;
+  z-index: 2;
+  opacity: 0.5;
+  transition: transform 0.2s ease-in-out, background 0.2s linear,
+    opacity 0.2s linear;
   @media screen and (hover: hover) {
     &:hover {
       transform: scale(1.1);
       background: darken($chatListBackground, 15);
+      opacity: 1;
     }
   }
 }
