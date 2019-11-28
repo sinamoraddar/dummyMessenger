@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dummyMessenger/static/css/main.5b126078.chunk.css",
+    "main.css": "/dummyMessenger/static/css/main.72077e6d.chunk.css",
     "main.js": "/dummyMessenger/static/js/main.8d8aa938.chunk.js",
     "main.js.map": "/dummyMessenger/static/js/main.8d8aa938.chunk.js.map",
     "runtime-main.js": "/dummyMessenger/static/js/runtime-main.00e15514.js",
@@ -8,14 +8,14 @@
     "static/js/2.0d4f80f5.chunk.js": "/dummyMessenger/static/js/2.0d4f80f5.chunk.js",
     "static/js/2.0d4f80f5.chunk.js.map": "/dummyMessenger/static/js/2.0d4f80f5.chunk.js.map",
     "index.html": "/dummyMessenger/index.html",
-    "precache-manifest.eb82e5fe4680e3f8b3c3698fdf04a4f1.js": "/dummyMessenger/precache-manifest.eb82e5fe4680e3f8b3c3698fdf04a4f1.js",
+    "precache-manifest.0210c9b7ca9109c4411cd22639a0ef47.js": "/dummyMessenger/precache-manifest.0210c9b7ca9109c4411cd22639a0ef47.js",
     "service-worker.js": "/dummyMessenger/service-worker.js",
-    "static/css/main.5b126078.chunk.css.map": "/dummyMessenger/static/css/main.5b126078.chunk.css.map"
+    "static/css/main.72077e6d.chunk.css.map": "/dummyMessenger/static/css/main.72077e6d.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.00e15514.js",
     "static/js/2.0d4f80f5.chunk.js",
-    "static/css/main.5b126078.chunk.css",
+    "static/css/main.72077e6d.chunk.css",
     "static/js/main.8d8aa938.chunk.js"
   ]
 }
