@@ -3,7 +3,7 @@ import { channels } from "../../../Utils/channels";
 import TabBarItem from "./TabBarItem/TabBarItem";
 import ToggleSideBarButton from "../../SideBar/ToggleSideBarButton/ToggleSideBarButton";
 import styles from "./TabBar.module.scss";
-const TabBar = ({ setCurrentTab, currentTab }) => (
+const TabBar = ({ setCurrentTab, currentTab, homepage }) => (
   <header className={styles.tabBar}>
     <nav>
       {channels.map(channel => (
@@ -12,6 +12,7 @@ const TabBar = ({ setCurrentTab, currentTab }) => (
           {...channel}
           setCurrentTab={setCurrentTab}
           currentTab={currentTab}
+          homepage={homepage}
         />
       ))}
     </nav>

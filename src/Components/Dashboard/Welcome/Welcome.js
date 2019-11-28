@@ -1,7 +1,7 @@
 import React from "react";
 
 const Welcome = () => (
-  <div>
+  <div className="center">
     Welcome
     <br />
     Please select a part to start

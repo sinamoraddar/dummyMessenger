@@ -24,7 +24,8 @@ const ChatItem = ({
   contact,
   currentChat,
   setCurrentChat,
-  setCurrentMessengerView
+  setCurrentMessengerView,
+  setIsFetchingChatData
 }) => {
   const [lastMessage, setLastMessage] = useState(null);
   useEffect(() => {
@@ -55,6 +56,7 @@ const ChatItem = ({
         styles.isActive}`}
       onClick={() => {
         // alert("hi");
+        setIsFetchingChatData(true);
         getChatData(contact.userId, setCurrentChat, contact);
         setCurrentMessengerView("chatScreen");
         // getChatData(contact.userId);

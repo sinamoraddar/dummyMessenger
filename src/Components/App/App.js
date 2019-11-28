@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import DashBoard from "../Dashboard/DashBoard";
 import Settings from "../Settings/Settings";
@@ -8,16 +8,32 @@ import AppContext from "./AppContext";
 import "./App.scss";
 
 function App() {
-  const [currentView, setCurrentView] = useState(`sideBar`);
+  const [currentView, setCurrentView] = useState(null);
   const homepage =
-    process.env.NODE_ENV === "development"
-      ? "/"
-      : "/REST-Countries-API-with-color-theme-switcher/";
+    process.env.NODE_ENV === "development" ? "/" : "/dummyMessenger/";
+  /* set the initial state for the currentView based on the url */
+  useEffect(() => {
+    switch (window.location.pathname) {
+      case homepage + "settings": {
+        setCurrentView("settings");
+        break;
+      }
+      case homepage + "calls": {
+        setCurrentView("calls");
+        break;
+      }
+      default: {
+        setCurrentView("Home");
+      }
+    }
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
         currentView,
-        setCurrentView
+        setCurrentView,
+        homepage
       }}
     >
       <BrowserRouter>

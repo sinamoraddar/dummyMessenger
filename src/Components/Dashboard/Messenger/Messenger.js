@@ -6,18 +6,20 @@ import ChatScreen from "./ChatScreen/ChatScreen";
 import { database } from "../../../firebase/firebase";
 const Messenger = props => {
   // const [chatList, setChatList] = useState({});
+  const [isFetchingChatData, setIsFetchingChatData] = useState(false);
   const [currentChat, setCurrentChat] = useState(null);
   const [contactsList, setContactsList] = useState(null);
   const [currentMessengerView, setCurrentMessengerView] = useState("chatList");
   /* update the contactslist whenever the currentChat changes */
-  // useEffect(() => {
-  //   if (currentChat) {
-  //     setContactsList({
-  //       ...contactsList,
-  //       [currentChat.userId]: { ...currentChat }
-  //     });
-  //   }
-  // }, [currentChat]);
+  useEffect(() => {
+    /* turn isFetchingChatData state to false whenever the chat data is retrieved from
+    the server ,AND DON'T DO IT when the object is empty  */
+    if (currentChat) {
+      if (Object.keys(currentChat).length > 0) {
+        setIsFetchingChatData(false);
+      }
+    }
+  }, [currentChat]);
   //fetch the users data
   useEffect(() => {
     database
@@ -45,6 +47,7 @@ const Messenger = props => {
         setCurrentChat={setCurrentChat}
         currentMessengerView={currentMessengerView}
         setCurrentMessengerView={setCurrentMessengerView}
+        setIsFetchingChatData={setIsFetchingChatData}
       />
       <ChatScreen
         currentChat={currentChat}
@@ -53,6 +56,7 @@ const Messenger = props => {
         setContactsList={setContactsList}
         currentMessengerView={currentMessengerView}
         setCurrentMessengerView={setCurrentMessengerView}
+        isFetchingChatData={isFetchingChatData}
       />
     </div>
   );

@@ -30,7 +30,7 @@ const SideBar = () => {
 
   return (
     <AppContext.Consumer>
-      {({ currentView, setCurrentView }) => (
+      {({ currentView, setCurrentView, homepage }) => (
         <aside
           className={`${styles.sideBar} ${isOpen && styles.isOpen} ${
             currentView === "sideBar"
@@ -50,7 +50,7 @@ const SideBar = () => {
           </button>
           <Avatar />
           <SideBarItem
-            path="/"
+            path={homepage}
             icon="house"
             name="Home"
             isOpen={isOpen}
@@ -59,7 +59,7 @@ const SideBar = () => {
             setCurrentView={setCurrentView}
           />
           <SideBarItem
-            path="/settings"
+            path={homepage + "settings"}
             icon="settings"
             name="Settings"
             isOpen={isOpen}
@@ -68,7 +68,7 @@ const SideBar = () => {
             setCurrentView={setCurrentView}
           />
           <SideBarItem
-            path="/calls"
+            path={homepage + "calls"}
             icon="phone-call"
             name="Calls"
             isOpen={isOpen}

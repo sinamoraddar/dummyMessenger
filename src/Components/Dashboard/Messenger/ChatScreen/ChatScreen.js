@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import MessageItem from "./MessageItem/MessageItem";
+import Loading from "../../../Loading/Loading";
 import uuidv1 from "uuid/v1";
 import moment from "moment";
 import { database } from "../../../../firebase/firebase";
@@ -109,7 +110,8 @@ const ChatScreen = ({
   contactsList,
   setContactsList,
   currentMessengerView,
-  setCurrentMessengerView
+  setCurrentMessengerView,
+  isFetchingChatData
 }) => {
   const [currentMessage, setCurrentMessage] = useState("");
   /* clear the typing area whenever the chat data changes */
@@ -137,7 +139,9 @@ const ChatScreen = ({
           `}
           >
             {/* render chat screen only when the currentChat is not null */}
-            {currentChat ? (
+            {isFetchingChatData ? (
+              <Loading />
+            ) : currentChat ? (
               <React.Fragment>
                 <button
                   className={styles.close}
@@ -197,7 +201,9 @@ const ChatScreen = ({
                 </div>
               </React.Fragment>
             ) : (
-              "welcome , please select a chat to start"
+              <div className={styles.welcomeMessage}>
+                welcome , please select a chat to start
+              </div>
             )}
           </div>
         );

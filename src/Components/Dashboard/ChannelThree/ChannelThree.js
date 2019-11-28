@@ -1,5 +1,7 @@
 import React from "react";
 
-const ChannelThree = () => <div>this is the ChannelThree</div>;
+const ChannelThree = () => (
+  <div className="center">this is the ChannelThree</div>
+);
 
 export default ChannelThree;

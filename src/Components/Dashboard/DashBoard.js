@@ -30,7 +30,7 @@ const DashBoard = props => {
   // const [currentTab, setCurrentTab] = useState("ChannelOne");
   return (
     <AppContext.Consumer>
-      {({ currentView, setCurrentView }) => {
+      {({ currentView, setCurrentView, homepage }) => {
         return (
           <main
             className={`${styles.dashboard} ${
@@ -40,18 +40,21 @@ const DashBoard = props => {
             }`}
           >
             {/* <h1>{context.testMessage}</h1> */}
-            <TabBar />
+            <TabBar homepage={homepage} />
             {/* <SideBar /> */}
             {/* we add the key prop to let react router differentiate 
           between different renders of the same component 
           on different routes
         */}
 
-            <Route path="/" exact component={Welcome} />
-            <Route path="/messenger" exact component={Messenger} />
-            <Route path="/channel1" exact component={ChannelOne} />
-            <Route path="/channel3" exact component={ChannelThree} />
-            {/* <Route /> */}
+            <Route path={homepage} exact component={Welcome} />
+            <Route path={homepage + "messenger"} exact component={Messenger} />
+            <Route path={homepage + "channel1"} exact component={ChannelOne} />
+            <Route
+              path={homepage + "channel3"}
+              exact
+              component={ChannelThree}
+            />
           </main>
         );
       }}

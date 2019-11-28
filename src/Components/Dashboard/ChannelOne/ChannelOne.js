@@ -1,5 +1,5 @@
 import React from "react";
 
-const ChannelOne = () => <div>this is the channelOne</div>;
+const ChannelOne = () => <div className="center">this is the channelOne</div>;
 
 export default ChannelOne;

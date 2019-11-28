@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import ChatItem from "./ChatItem/ChatItem";
+import Loading from "../../../Loading/Loading";
 import styles from "./ChatList.module.scss";
 
 const createChatList = (
   tempContactsList,
   setCurrentChat,
   currentChat,
-  setCurrentMessengerView
+  setCurrentMessengerView,
+  setIsFetchingChatData
 ) => {
   // console.log(tempContactsList);
   return tempContactsList.map(contact => (
@@ -15,6 +17,7 @@ const createChatList = (
       setCurrentChat={setCurrentChat}
       currentChat={currentChat}
       setCurrentMessengerView={setCurrentMessengerView}
+      setIsFetchingChatData={setIsFetchingChatData}
     />
   ));
 };
@@ -31,7 +34,8 @@ const ChatList = ({
   currentChat,
   setCurrentChat,
   currentMessengerView,
-  setCurrentMessengerView
+  setCurrentMessengerView,
+  setIsFetchingChatData
 }) => {
   const [filterBy, setFilterBy] = useState("");
   console.log("contactslist", contactsList);
@@ -58,16 +62,11 @@ const ChatList = ({
             filterContactList(contactsList, filterBy),
             setCurrentChat,
             currentChat,
-            setCurrentMessengerView
+            setCurrentMessengerView,
+            setIsFetchingChatData
           )
         ) : (
-          <React.Fragment>
-            <img
-              className={styles.loading}
-              src="./assets/gifs/loading.svg"
-              alt="loading"
-            />
-          </React.Fragment>
+          <Loading />
         )}
       </div>
     </div>

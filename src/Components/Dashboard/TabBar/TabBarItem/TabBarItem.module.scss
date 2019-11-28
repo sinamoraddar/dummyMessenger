@@ -9,6 +9,18 @@
   font-size: 1rem;
   text-transform: uppercase;
   text-decoration: none;
+  @media screen and (max-width: 400px) {
+    margin: 0 5px;
+    font-size: 12px;
+  }
+
+  @media screen and (max-width: 460px) {
+    margin: 0 10px;
+  }
+
+  @media screen and (max-width: 590px) {
+    margin: 0 20px;
+  }
   @media screen and (hover: hover) {
     &:hover {
       font-weight: bold;
