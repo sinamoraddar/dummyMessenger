@@ -75,11 +75,12 @@ const submitMessage = (
   currentMessage,
   setCurrentMessage,
   currentChat,
-  setCurrentChat
+  setCurrentChat,
+  currentAuthor
 ) => {
   const tempUuid = uuidv1();
   const tempMessage = {
-    author: 0,
+    author: currentAuthor === "user" ? 0 : currentChat.chatId,
     content: currentMessage,
     messageId: tempUuid,
     submissionTime: moment().valueOf()
@@ -114,6 +115,7 @@ const ChatScreen = ({
   isFetchingChatData
 }) => {
   const [currentMessage, setCurrentMessage] = useState("");
+  const [currentAuthor, setCurrentAuthor] = useState("user");
   /* clear the typing area whenever the chat data changes */
   useEffect(() => {
     setCurrentMessage("");
@@ -157,6 +159,7 @@ const ChatScreen = ({
                     {currentChat.messages.map(chat =>
                       chat.author === 0 ? (
                         <MessageItem
+                          key={chat.messageId}
                           author={userInfo}
                           chat={chat}
                           deleteMessage={deleteMessage}
@@ -165,6 +168,7 @@ const ChatScreen = ({
                         />
                       ) : (
                         <MessageItem
+                          key={chat.messageId}
                           author={currentChat.contact}
                           chat={chat}
                           deleteMessage={deleteMessage}
@@ -189,7 +193,8 @@ const ChatScreen = ({
                           currentMessage,
                           setCurrentMessage,
                           currentChat,
-                          setCurrentChat
+                          setCurrentChat,
+                          currentAuthor
                         );
 
                         // data.setTestMessage(currentMessage);
@@ -198,6 +203,17 @@ const ChatScreen = ({
                       <i className="icon ion-md-send"></i>
                     </button>
                   )}
+                  <span
+                    className={`${styles.currentAuthor} ${currentAuthor ===
+                      "friend" && styles.friend}`}
+                    onClick={() => {
+                      setCurrentAuthor(currentAuthor => {
+                        return currentAuthor === "user" ? "friend" : "user";
+                      });
+                    }}
+                  >
+                    Send as : {currentAuthor}
+                  </span>
                 </div>
               </React.Fragment>
             ) : (

@@ -13,6 +13,7 @@ const createChatList = (
   // console.log(tempContactsList);
   return tempContactsList.map(contact => (
     <ChatItem
+      key={contact.name}
       contact={contact}
       setCurrentChat={setCurrentChat}
       currentChat={currentChat}
@@ -38,7 +39,7 @@ const ChatList = ({
   setIsFetchingChatData
 }) => {
   const [filterBy, setFilterBy] = useState("");
-  console.log("contactslist", contactsList);
+  // console.log("contactslist", contactsList);
   return (
     <div
       className={`${styles.chatList} ${

@@ -40,7 +40,7 @@ const ChatItem = ({
         if (Object.keys(querysnapshot.data()).length > 0) {
           // console.log(querysnapshot.data());
           // debugger;
-          console.log("lastmessage", querysnapshot.data());
+          // console.log("lastmessage", querysnapshot.data());
           tempLastMessage = querysnapshot.data().content;
           if (tempLastMessage.length > 20) {
             tempLastMessage = tempLastMessage.substring(0, 20) + "...";

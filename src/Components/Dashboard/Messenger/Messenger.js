@@ -29,7 +29,7 @@ const Messenger = props => {
         const tempContactsList = [];
         querySnapshot.forEach(function(doc) {
           // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          // console.log(doc.id, " => ", doc.data());
           tempContactsList.push(doc.data());
         });
         setContactsList(tempContactsList);

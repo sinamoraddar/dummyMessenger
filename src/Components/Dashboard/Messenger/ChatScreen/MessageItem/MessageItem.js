@@ -36,10 +36,10 @@ const MessageItem = ({
                 )
               }
             >
-              <i class="icon ion-md-trash"></i>
+              <i className="icon ion-md-trash"></i>
             </button>
             <span className={styles["time--user"]}>
-              {moment(chat.submissionTime).format("HH : mm")}
+              {moment(chat.submissionTime).format("YYYY/M/D - HH : mm")}
             </span>
           </div>
         </React.Fragment>
@@ -65,10 +65,10 @@ const MessageItem = ({
                 )
               }
             >
-              <i class="icon ion-md-trash"></i>
+              <i className="icon ion-md-trash"></i>
             </button>
             <span className={styles["time--friend"]}>
-              {moment(chat.submissionTime).format("HH : mm")}
+              {moment(chat.submissionTime).format("YYYY/M/D - HH : mm")}
             </span>
           </div>
         </React.Fragment>

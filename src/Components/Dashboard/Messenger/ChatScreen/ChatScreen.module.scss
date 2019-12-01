@@ -56,8 +56,9 @@
     width: 100%;
     background: lighten($chatListBackground, 2%);
     border: none;
-    padding: 2rem 1.5rem;
+    padding: 2.3rem 1.5rem;
     font-size: 1rem;
+    word-wrap: break-word;
   }
 }
 
@@ -124,4 +125,32 @@
   @media screen and (max-width: 1000px) {
     display: none;
   }
+}
+
+.currentAuthor {
+  color: white;
+  position: absolute;
+  top: 6px;
+  left: 17px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 20px;
+  font-size: 0.8em;
+  background: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 2px 3px;
+  transition: transform 0.2s ease-in-out, background 0.2s linear;
+  @media screen and(hover:hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  @extend %normalBoxShadow;
+}
+
+.friend {
+  background: $sendMessageButton;
 }
